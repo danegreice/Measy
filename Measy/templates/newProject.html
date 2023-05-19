@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>New Project</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-primary"> <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02"
+            aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'index' %}">Logout</a> </li>
+            </ul>
+            <form class="form-inline my-2 my-md-0"> </form>
+        </div>
+    </nav>
+    <br />
+
+    <form action="{% url 'register' %}" method="POST" class="form-horizontal" autocomplete="off">
+        {% csrf_token %}
+        <fieldset>
+            <div class="panel panel-primary">
+
+                <div class="panel-body">
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="name">Name <h11>*</h11></label>
+                        <div class="col-md-8">
+                            <input id="name" name="name" placeholder="" class="form-control input-md" required=""
+                                type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="description">Description <h11>*</h11></label>
+                        <div class="col-md-8">
+                            <input id="description" name="description" placeholder="" class="form-control input-md"
+                                required="" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="description">Manager <h11>*</h11></label>
+                        <div class="col-md-8">
+                            <input id="description" name="description" placeholder="" class="form-control input-md"
+                                required="" type="text">
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label required="" class="col-md-2 control-label" for="type">Type <h11>*</h11></label>
+                        <div class="col-md-8">
+                            <select class="form-control" id="type" required data-validation-required-message="Select an item" required>
+                                <option value="">Select a option</option>
+                                <option value="1">Desenvolvimento de software</option>
+                                <option value="2">Pesquisa e desenvolvimento</option>
+                                <option value="3">Pessoais</option>
+                                <option value="4">Empresariais</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="methodology">Methodology <h11>*</h11></label>
+                        <div class="col-md-8">
+                            <select class="form-control" id="methodology" required data-validation-required-message="Select an item" required>
+                                <option value="">Select a option</option>
+                                <option value="1">Scrum</option>
+                                <option value="2">Kanban</option>
+                                <option value="3">Lean Startup</option>
+                                <option value="4">Extreme Programming - XP</option>
+                                <option value="5">Scalend Agile Framework - SAFe</option>
+                                <option value="6">Cascata</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="size">Size <h11>*</h11></label>
+                        <div class="col-md-8">
+                            <select class="form-control" id="size" required data-validation-required-message="Select an item" required>
+                                <option value="">Select a option</option>
+                                <option value="1">Pessoal (até 2 pessoas)</option>
+                                <option value="2">Pequeno (3-5 pessoas)</option>
+                                <option value="3">Médio (5-9 pessoas)</option>
+                                <option value="4">Grande (10-12 pessoas)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="Cadastrar"></label>
+                        <div class="col-md-8">
+                            <button id="Cadastrar" name="Cadastrar" class="btn btn-success"
+                                type="submit">Register</button>
+                            <a href="{% url 'login' %}" id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancel</a>
+                        </div>
+                    </div>
+        </fieldset>
+
+</body>
+
+</html>
