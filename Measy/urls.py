@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from .views import login, index, get_projects, project, register, home, projects, newProject
+from .views import login, index, get_projects, project, register, home, projects, newProject, questions
 
 urlpatterns = [
     path('', index, name="index"),
@@ -8,6 +8,7 @@ urlpatterns = [
     path('login', login, name="login"),
     path('project/<int:id_project>', project, name="project"),
     path('register', register, name="register"),
+    path('questions', questions, name="questions"),
     path('projects/<str:id_manager>', projects, name="projects"),
     path('newProject', newProject, name="newProject"),
     path('home/<str:id_manager>', home, name="home")

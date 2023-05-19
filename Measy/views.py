@@ -56,6 +56,10 @@ def projects(request, id_manager):
 
     return render(request, "projects.html")
 
+def questions(request):
+
+    return render(request, "questions.html")
+
 def get_projects(request, id_project):
     projectList = Project.objects.all()
 
