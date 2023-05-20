@@ -26,7 +26,7 @@
     </nav>
     <br />
 
-    <form action="{% url 'register' %}" method="POST" class="form-horizontal" autocomplete="off">
+    <form action="{% url 'newProject' manager.cpf %}" method="POST" class="form-horizontal" autocomplete="off">
         {% csrf_token %}
         <fieldset>
             <div class="panel panel-primary">
@@ -51,10 +51,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="description">Manager <h11>*</h11></label>
+                        <label class="col-md-2 control-label" for="manager">Manager <h11>*</h11></label>
                         <div class="col-md-8">
-                            <input id="description" name="description" placeholder="" class="form-control input-md"
-                                required="" type="text">
+                            <input id="manager" name="manager" placeholder="" class="form-control input-md"
+                                required="" type="text" value="{{manager.cpf}}">
                         </div>
                     </div>
 
@@ -62,38 +62,38 @@
                     <div class="form-group">
                         <label required="" class="col-md-2 control-label" for="type">Type <h11>*</h11></label>
                         <div class="col-md-8">
-                            <select class="form-control" id="type" required data-validation-required-message="Select an item" required>
+                            <select class="form-control" id="type" name="type" required data-validation-required-message="Select an item" required>
                                 <option value="">Select a option</option>
-                                <option value="1">Desenvolvimento de software</option>
-                                <option value="2">Pesquisa e desenvolvimento</option>
-                                <option value="3">Pessoais</option>
-                                <option value="4">Empresariais</option>
+                                <option value="Desenvolvimento de software">Desenvolvimento de software</option>
+                                <option value="Pesquisa e desenvolvimento">Pesquisa e desenvolvimento</option>
+                                <option value="Pessoais">Pessoais</option>
+                                <option value="Empresariais">Empresariais</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="methodology">Methodology <h11>*</h11></label>
                         <div class="col-md-8">
-                            <select class="form-control" id="methodology" required data-validation-required-message="Select an item" required>
+                            <select class="form-control" id="methodology" name="methodology" required data-validation-required-message="Select an item" required>
                                 <option value="">Select a option</option>
-                                <option value="1">Scrum</option>
-                                <option value="2">Kanban</option>
-                                <option value="3">Lean Startup</option>
-                                <option value="4">Extreme Programming - XP</option>
-                                <option value="5">Scalend Agile Framework - SAFe</option>
-                                <option value="6">Cascata</option>
+                                <option value="Scrum">Scrum</option>
+                                <option value="Kanban">Kanban</option>
+                                <option value="Lean Startup">Lean Startup</option>
+                                <option value="Extreme Programming - XP">Extreme Programming - XP</option>
+                                <option value="Scalend Agile Framework - SAFe">Scalend Agile Framework - SAFe</option>
+                                <option value="Cascata">Cascata</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="size">Size <h11>*</h11></label>
                         <div class="col-md-8">
-                            <select class="form-control" id="size" required data-validation-required-message="Select an item" required>
+                            <select class="form-control" id="size" name="size" required data-validation-required-message="Select an item" required>
                                 <option value="">Select a option</option>
-                                <option value="1">Pessoal (até 2 pessoas)</option>
-                                <option value="2">Pequeno (3-5 pessoas)</option>
-                                <option value="3">Médio (5-9 pessoas)</option>
-                                <option value="4">Grande (10-12 pessoas)</option>
+                                <option value="Pessoal">Pessoal (até 2 pessoas)</option>
+                                <option value="Pequeno">Pequeno (3-5 pessoas)</option>
+                                <option value="Médio">Médio (5-9 pessoas)</option>
+                                <option value="Grande">Grande (10-12 pessoas)</option>
                             </select>
                         </div>
                     </div>

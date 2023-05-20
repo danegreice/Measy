@@ -17,7 +17,7 @@ class Manager(models.Model):
     password = models.CharField('Password', max_length=100)
 
     def __str__(self):
-        return self.cpf, self.name, self.login, self.password, self.email, self.phone
+        return f'{self.name} - {self.login}'
 
 class Evaluation(models.Model):
     manager = models.ForeignKey(Manager, on_delete=models.PROTECT)
@@ -37,4 +37,4 @@ class Project(models.Model):
     description = models.TextField('Descrição')
 
     def __str__(self):
-        return self.name
+        return self.methodology

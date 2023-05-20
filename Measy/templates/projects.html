@@ -24,19 +24,59 @@
             <form class="form-inline my-2 my-md-0"> </form>
         </div>
     </nav>
-    <br/>
+    <br />
     <div class="container justify-content-center col-md-4">
-        <a type="button" href="{% url 'newProject' %}" class="btn btn-primary btn-lg btn-block">New Project</a>
+        <a type="button" href="{% url 'newProject' manager.cpf %}" class="btn btn-primary btn-lg btn-block">New
+            Project</a>
     </div>
-    {% if list %}
-        <ul>
-            {% for cada in list %}
-                <li> {{cada.name}} </li>
-            {% endfor %}
-        </ul>
+    <br />
+    <!-- {% if list %}
+    <ul>
+        {% for cada in list %}
+        <div class="btn btn-primary btn-lg btn-block">
+            <li> {{cada.name}} </li>
+            <li> {{cada.methodology}} </li>
+            <li> {{cada.ty}} </li>
+        </div>
+        {% endfor %}
+    </ul>
     {% else %}
-        <p> Does not have projects </p>
-    {% endif %}
+    <p> Does not have projects </p>
+    {% endif %} -->
+
+    <div class='row card-group'>
+        {% for item in list %}
+        <div class="col-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="font-weight-bold blue-text">
+                        <strong>
+                            {% if item.methodology %}
+                            {{ item.name }}
+                            {% else %}
+                            ${{ item.ty}}
+                            {% endif %}
+                        </strong>
+                    </h4>
+                    <h5 class="card-title">{{ item.methodology }}</h5>
+                    <p class="card-text">
+                        {{ item.description }}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <label class="col-md-2 control-label" for="Cadastrar"></label>
+                    <div class="col-md-8">
+                        <button id="Cadastrar" name="Cadastrar" class="col-md-4 btn btn-primary" type="submit">Edit</button>
+                        <button id="Cancelar" name="Cancelar" class="col-md-4 btn btn-primary" type="Reset">Delete</button>
+                        <a href="{% url 'project' item.id %}" id="Ver" name="Ver" class="col-md-4 btn btn-primary" type="submit">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
 
 </body>
 

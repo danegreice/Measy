@@ -10,6 +10,6 @@ urlpatterns = [
     path('register', register, name="register"),
     path('questions', questions, name="questions"),
     path('projects/<str:id_manager>', projects, name="projects"),
-    path('newProject', newProject, name="newProject"),
+    path('newProject/<str:id_manager>', newProject, name="newProject"),
     path('home/<str:id_manager>', home, name="home")
 ]

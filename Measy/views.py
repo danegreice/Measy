@@ -51,10 +51,13 @@ def register(request):
     return render(request, "register.html")
 
 def projects(request, id_manager):
-    if request.method == "GET":
-        print("oi")
+    manager = get_object_or_404(Manager, cpf=id_manager)
+    projectList = Project.objects.all()
 
-    return render(request, "projects.html")
+    if request.method == "GET":
+        print(id_manager)
+
+    return render(request, "projects.html", {"manager": manager, "list": projectList})
 
 def questions(request):
 
@@ -65,9 +68,31 @@ def get_projects(request, id_project):
 
     return render(request, "projects.html", {"list": projectList})
 
-def newProject(request):
+def newProject(request, id_manager):
+    manager = get_object_or_404(Manager, cpf=id_manager)
 
-    return render(request, "newProject.html")
+    if request.method == "POST":
+        name = request.POST.get('name', None)
+        description = request.POST.get('description', None)
+        manager = request.POST.get('manager', None)
+        ty_pe = request.POST.get('type', None)
+        methodology = request.POST.get('methodology', None)
+        size = request.POST.get('size', None)
+
+        print(type(name))
+
+        objectManager = get_object_or_404(Manager, cpf=manager)
+        # manager = Manager.objects.all()
+        # man = Manager.objects
+        # for i in list(manager):
+        #     if (i.name == name):
+        #         man = i
+
+        project = Project(name=name, ty=ty_pe, size=size, methodology=methodology, manager=objectManager, description=description)
+        project.save()
+        return redirect('projects', objectManager.cpf)
+
+    return render(request, "newProject.html", {"manager": manager})
 
 def project(request, id_project):
     project = get_object_or_404(Project, id=id_project)
