@@ -15,6 +15,7 @@ class Manager(models.Model):
     phone = models.CharField('Telefone', max_length=16)
     login = models.CharField('Login', max_length=100)
     password = models.CharField('Password', max_length=100)
+    experience = models.CharField('Experiência', max_length=20)
 
     def __str__(self):
         return f'{self.name} - {self.login}'
@@ -35,6 +36,7 @@ class Project(models.Model):
     methodology = models.CharField('Metodologia utilizada',max_length=50)
     manager = models.ForeignKey(Manager, on_delete=models.PROTECT)
     description = models.TextField('Descrição')
+    metrics = models.CharField('Tipo', max_length=50)
 
     def __str__(self):
         return self.methodology

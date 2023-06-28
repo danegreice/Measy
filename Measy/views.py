@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-from .models import Project, Manager
+from .models import Project, Manager, Metric
 from .forms import ManagerForm
 from django.contrib import messages
 
@@ -37,14 +37,16 @@ def register(request):
         email = request.POST.get('email', None)
         login = request.POST.get('login', None)
         password = request.POST.get('password', None)
+        experience = request.POST.get('experience', None)
 
         manager = Manager.objects.all()
         for i in list(manager):
             if (i.cpf == cpf):
                 messages.info(request, 'Já cadastrado')
 
-        manager = Manager(name=name, cpf= cpf, email= email, phone= phone, login= login, password= password)
+        manager = Manager(name=name, cpf= cpf, email= email, phone= phone, login= login, password= password, experience= experience)
         manager.save()
+        
         return redirect('login')
 
         
@@ -59,9 +61,10 @@ def projects(request, id_manager):
 
     return render(request, "projects.html", {"manager": manager, "list": projectList})
 
-def questions(request):
+def questions(request, id_project):
+    project = get_object_or_404(Project, id=id_project)
 
-    return render(request, "questions.html")
+    return render(request, "questions.html", {"project": project})
 
 def get_projects(request, id_project):
     projectList = Project.objects.all()
@@ -78,8 +81,7 @@ def newProject(request, id_manager):
         ty_pe = request.POST.get('type', None)
         methodology = request.POST.get('methodology', None)
         size = request.POST.get('size', None)
-
-        print(type(name))
+        metrics = ''
 
         objectManager = get_object_or_404(Manager, cpf=manager)
         # manager = Manager.objects.all()
@@ -96,5 +98,19 @@ def newProject(request, id_manager):
 
 def project(request, id_project):
     project = get_object_or_404(Project, id=id_project)
+
+    if request.method == "POST":
+        one = request.POST.get('oneQuestion', None)
+        two = request.POST.get('twoQuestion', None)
+        three = request.POST.get('thrQuestion', None)
+        four = request.POST.get('fouQuestion', None)
+        five = request.POST.get('fivQuestion', None)
+        six = request.POST.get('sixQuestion', None)
+        seven = request.POST.get('sevQuestion', None)
+        eight = request.POST.get('eigQuestion', None)
+        nine = request.POST.get('ninQuestion', None)
+        ten = request.POST.get('tenQuestion', None)
+
+        print(one, two, three)
 
     return render(request, "project.html", {"project": project})

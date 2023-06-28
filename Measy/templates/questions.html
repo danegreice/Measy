@@ -25,153 +25,172 @@
     </div>
   </nav>
   <br />
-  <div class="form-group">
-    <label class="col-md-8 control-label" for="oneQuestion">Quero saber se o projeto está atingindo os prazos de entrega? <h11>*</h11></label>
-    <div class="col-md-8">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="oneQuestionY" value="opcao1">
-        <label class="form-check-label" for="oneQuestion">Sim</label>
+  <form action="{% url 'project' project.id %}" method="POST" class="form-horizontal" autocomplete="off">
+    {% csrf_token %}
+    <fieldset>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="oneQuestion">Quero saber se o projeto está atingindo os prazos de
+          entrega? <h11>*</h11></label>
+        <div class="col-md-8" id="oneQuestion" name="oneQuestion">
+          <div class="form-check form-check-inline">
+            <input name="oneQuestionY" class="form-check-input" type="radio" id="oneQuestionY" value="0">
+            <label class="form-check-label" for="oneQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="oneQuestionN" name="oneQuestionN" value="1">
+            <label class="form-check-label" for="oneQuestionN">Não</label>
+          </div>
+        </div>
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="oneQuestionN" value="opcao2">
-        <label class="form-check-label" for="oneQuestion">Não</label>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="twoQuestion">Quero saber se as atividades críticas estão sendo
+          entregues
+          no prazo? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="secQuestionY" name="secQuestionY" value="0">
+            <label class="form-check-label" for="secQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="secQuestionN" name="secQuestionN" value="1">
+            <label class="form-check-label" for="secQuestionN">Não</label>
+          </div>
+        </div>
       </div>
-    </div>
-</div>
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">Quero saber se as atividades críticas estão sendo entregues no prazo? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="secQuestionY" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="secQuestionN" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
 
 
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">Quero saber se as entregas estão acontecendo de forma sustentável e incremental? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="thrQuestion">Quero saber se as entregas estão acontecendo de forma
+          sustentável e incremental? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="terQuestionY" name="terQuestionY" value="0">
+            <label class="form-check-label" for="terQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="terQuestionN" name="terQuestionN" value="1">
+            <label class="form-check-label" for="terQuestionN">Não</label>
+          </div>
+        </div>
+      </div>
 
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">Quero saber se o esforço realizado pela equipe é condizente com o planejado? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="fouQuestion">Quero saber se o esforço realizado pela equipe é
+          condizente
+          com o planejado? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="quaQuestionY" name="quaQuestionY" value="0">
+            <label class="form-check-label" for="quaQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="quaQuestionN" name="quaQuestionN" value="1">
+            <label class="form-check-label" for="quaQuestionN">Não</label>
+          </div>
+        </div>
+      </div>
 
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">Quero saber se o escopo do projeto é claro, para que a equipe possa desempenhar suas atividades? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">Quero saber se o cliente permanece engajado e satisfeito ao longo do projeto? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="fivQuestion">Quero saber se o escopo do projeto é claro, para que a
+          equipe possa desempenhar suas atividades? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="quiQuestionY" name="quiQuestionY" value="0">
+            <label class="form-check-label" for="quiQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="quiQuestionN" name="quiQuestionN" value="1">
+            <label class="form-check-label" for="quiQuestionN">Não</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="sixQuestion">Quero saber se o cliente permanece engajado e satisfeito
+          ao
+          longo do projeto? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="sixQuestionY" name="sixQuestionY" value="0">
+            <label class="form-check-label" for="sixQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="sixQuestionN" name="sixQuestionN" value="1">
+            <label class="form-check-label" for="sixQuestionN">Não</label>
+          </div>
+        </div>
+      </div>
 
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">Quero saber se os gastos do projeto estão indo ao encontro do orçamento e cronograma estimados? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="sevQuestion">Quero saber se os gastos do projeto estão indo ao
+          encontro
+          do orçamento e cronograma estimados? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="sevQuestionY" name="sevQuestionY" value="0">
+            <label class="form-check-label" for="sevQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="sevQuestionN" name="sevQuestionN" value="1">
+            <label class="form-check-label" for="sevQuestionN">Não</label>
+          </div>
+        </div>
+      </div>
 
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">Quero saber se as mudanças no tamanho do produto e interface estão sob controle? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="eigQuestion">Quero saber se as mudanças no tamanho do produto e
+          interface
+          estão sob controle? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="oitQuestionY" name="oitQuestionY" value="0">
+            <label class="form-check-label" for="oitQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="oitQuestionN" name="oitQuestionN" value="1">
+            <label class="form-check-label" for="oitQuestionN">Não</label>
+          </div>
+        </div>
+      </div>
 
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">Quero saber se os processos são eficientes o suficiente para ir ao encontro dos compromissos e objetivos planejados? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="ninQuestion">Quero saber se os processos são eficientes o suficiente
+          para
+          ir ao encontro dos compromissos e objetivos planejados? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="ninQuestionY" name="ninQuestionY" value="0">
+            <label class="form-check-label" for="ninQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="ninQuestionN" name="ninQuestionN" value="1">
+            <label class="form-check-label" for="ninQuestionN">Não</label>
+          </div>
+        </div>
+      </div>
 
-<div class="form-group">
-  <label class="col-md-8 control-label" for="description">QQuero saber se o projeto está bom o suficiente para ser entregue ao cliente? Os problemas identificados estão sendo resolvidos? <h11>*</h11></label>
-  <div class="col-md-8">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-      <label class="form-check-label" for="inlineRadio1">Sim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-      <label class="form-check-label" for="inlineRadio2">Não</label>
-    </div>
-  </div>
-</div>
+      <div class="form-group">
+        <label class="col-md-8 control-label" for="tenQuestion">Quero saber se o projeto está bom o suficiente para ser
+          entregue ao cliente? Os problemas identificados estão sendo resolvidos? <h11>*</h11></label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="tenQuestionY" name="tenQuestionY" value="0">
+            <label class="form-check-label" for="tenQuestionY">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="tenQuestionN" name="tenQuestionN" value="1">
+            <label class="form-check-label" for="tenQuestionN">Não</label>
+          </div>
+        </div>
+      </div>
 
-<div class="form-group">
-  <label class="col-md-2 control-label" for="Cadastrar"></label>
-  <div class="col-md-8">
-      <button id="Cadastrar" name="Cadastrar" class="btn btn-success"
-          type="submit">Register</button>
-      <a href="{% url 'login' %}" id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancel</a>
-  </div>
-</div>
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="Cadastrar"></label>
+        <div class="col-md-8">
+          <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="submit">Register</button>
+          <a href="{% url 'project' project.id %}" id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancel</a>
+        </div>
+      </div>
+    </fieldset>
 </body>
 
 </html>
